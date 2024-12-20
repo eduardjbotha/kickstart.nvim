@@ -199,7 +199,6 @@ vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper win
 vim.keymap.set('i', 'jk', '<Esc>', {})
 vim.keymap.set('i', 'kj', '<Esc>', {})
 
-vim.keymap.set('n', '<leader>e', require('neotree').toggle, { desc = 'Toggle file [E]xplorer' })
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
 
