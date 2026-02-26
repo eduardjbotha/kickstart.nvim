@@ -169,6 +169,11 @@ vim.opt.softtabstop = 4
 vim.opt.shiftwidth = 4
 vim.opt.expandtab = true
 
+vim.opt.tabstop = 4
+vim.opt.softtabstop = 4
+vim.opt.shiftwidth = 4
+vim.opt.expandtab = true
+
 -- [[ Basic Keymaps ]]
 --  See `:help vim.keymap.set()`
 
@@ -818,6 +823,91 @@ require('lazy').setup({
       -- Like many other themes, this one has different styles, and you could load
       -- any other, such as 'tokyonight-storm', 'tokyonight-moon', or 'tokyonight-day'.
       vim.cmd.colorscheme 'tokyonight-night'
+    end,
+  },
+
+  {
+    -- If you want to see what colorschemes are already installed, you can use `:Telescope colorscheme`.
+    'savq/melange-nvim',
+    priority = 1000, -- Make sure to load this before all the other start plugins.
+    init = function()
+      -- Load the colorscheme here.
+      -- vim.cmd.colorscheme 'melange'
+      -- You can configure highlights by doing something like:
+      vim.opt.termguicolors = true
+    end,
+  },
+
+  {
+    'neanias/everforest-nvim',
+    version = false,
+    lazy = false,
+    priority = 1000, -- make sure to load this before all the other start plugins
+    -- Optional; default configuration will be used if setup isn't called.
+    -- config = function()
+    --   require('everforest').setup {
+    --     -- Your config here
+    --   }
+    -- end,
+  },
+  {
+    'olimorris/onedarkpro.nvim',
+    priority = 1000, -- Ensure it loads first
+  },
+  {
+    'ray-x/starry.nvim',
+    lazy = false,
+    priority = 1000,
+    config = function()
+      -- Optionally configure and load the colorscheme
+      local config = {
+        border = false, -- Split window borders
+        hide_eob = true, -- Hide end of buffer
+        italics = {
+          comments = false, -- Italic comments
+          strings = false, -- Italic strings
+          keywords = false, -- Italic keywords
+          functions = false, -- Italic functions
+          variables = false, -- Italic variables
+        },
+
+        contrast = { -- Select which windows get the contrast background
+          enable = true, -- Enable contrast
+          terminal = true, -- Darker terminal
+          filetypes = {}, -- Which filetypes get darker? e.g. *.vim, *.cpp, etc.
+        },
+
+        text_contrast = {
+          lighter = false, -- Higher contrast text for lighter style
+          darker = false, -- Higher contrast text for darker style
+        },
+
+        disable = {
+          background = false, -- true: transparent background
+          term_colors = false, -- Disable setting the terminal colors
+          eob_lines = false, -- Make end-of-buffer lines invisible
+        },
+
+        style = {
+          name = 'mariana', -- Theme style name (moonlight, earliestsummer, etc.)
+          -- " other themes: dracula, oceanic, dracula_blood, 'deep ocean', darker, palenight, monokai, mariana, emerald, middlenight_blue
+          disable = {}, -- a list of styles to disable, e.g. {'bold', 'underline'}
+          fix = true,
+          darker_contrast = false, -- More contrast for darker style
+          daylight_swith = false, -- Enable day and night style switching
+          deep_black = false, -- Enable a deeper black background
+        },
+
+        custom_colors = {
+          variable = '#f797d7',
+        },
+        custom_highlights = {
+          LineNr = { fg = '#777777' },
+          Idnetifier = { fg = '#ff4797' },
+        },
+      }
+      require('starry').setup(config)
+      vim.cmd.colorscheme 'mariana'
     end,
   },
 
